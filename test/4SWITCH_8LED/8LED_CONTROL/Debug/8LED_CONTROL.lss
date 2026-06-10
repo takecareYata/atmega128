@@ -17,15 +17,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   6 .debug_abbrev 0000080f  00000000  00000000  00000b69  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000333  00000000  00000000  00001378  2**0
+  7 .debug_line   00000337  00000000  00000000  00001378  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  000016ac  2**2
+  8 .debug_frame  00000024  00000000  00000000  000016b0  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000408  00000000  00000000  000016d0  2**0
+  9 .debug_str    00000408  00000000  00000000  000016d4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000011b  00000000  00000000  00001ad8  2**0
+ 10 .debug_loc    0000011b  00000000  00000000  00001adc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00001bf3  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00001bf7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -134,154 +134,154 @@ int main(void)
 	PORTA = led_pattern;
   a8:	81 e0       	ldi	r24, 0x01	; 1
   aa:	8b bb       	out	0x1b, r24	; 27
-#define F_CPU 16000000UL // 16MHz 크리스탈 사용 시 (자신의 환경에 맞게 수정)
-#include <avr/io.h>
-#include <util/delay.h>
-
-int main(void)
-{
-  ac:	81 e0       	ldi	r24, 0x01	; 1
-	PORTA = led_pattern;
 
 	while (1)
 	{
 		// --- PD3 스위치: 왼쪽으로 쉬프트 ---
 		if (PIND & (1 << PD3))
-  ae:	83 9b       	sbis	0x10, 3	; 16
-  b0:	11 c0       	rjmp	.+34     	; 0xd4 <main+0x36>
+  ac:	83 9b       	sbis	0x10, 3	; 16
+  ae:	11 c0       	rjmp	.+34     	; 0xd2 <main+0x34>
 		{
 			// 가장 왼쪽(0x80)에 도달하면 다시 0x01로 순환 (선택 사항)
-			if (led_pattern == 0x80) led_pattern = 0x01;
-  b2:	80 38       	cpi	r24, 0x80	; 128
-  b4:	11 f0       	breq	.+4      	; 0xba <main+0x1c>
-			else led_pattern <<= 1;
-  b6:	88 0f       	add	r24, r24
-  b8:	01 c0       	rjmp	.+2      	; 0xbc <main+0x1e>
+			if (led_pattern == 0x01) led_pattern = 0x80;
+  b0:	81 30       	cpi	r24, 0x01	; 1
+  b2:	11 f0       	breq	.+4      	; 0xb8 <main+0x1a>
+			else led_pattern >>= 1;
+  b4:	86 95       	lsr	r24
+  b6:	01 c0       	rjmp	.+2      	; 0xba <main+0x1c>
 	{
 		// --- PD3 스위치: 왼쪽으로 쉬프트 ---
 		if (PIND & (1 << PD3))
 		{
 			// 가장 왼쪽(0x80)에 도달하면 다시 0x01로 순환 (선택 사항)
-			if (led_pattern == 0x80) led_pattern = 0x01;
-  ba:	81 e0       	ldi	r24, 0x01	; 1
-			else led_pattern <<= 1;
+			if (led_pattern == 0x01) led_pattern = 0x80;
+  b8:	80 e8       	ldi	r24, 0x80	; 128
+			else led_pattern >>= 1;
 			
 			PORTA = led_pattern;
-  bc:	8b bb       	out	0x1b, r24	; 27
+  ba:	8b bb       	out	0x1b, r24	; 27
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  be:	2f ef       	ldi	r18, 0xFF	; 255
-  c0:	33 ec       	ldi	r19, 0xC3	; 195
-  c2:	99 e0       	ldi	r25, 0x09	; 9
-  c4:	21 50       	subi	r18, 0x01	; 1
-  c6:	30 40       	sbci	r19, 0x00	; 0
-  c8:	90 40       	sbci	r25, 0x00	; 0
-  ca:	e1 f7       	brne	.-8      	; 0xc4 <main+0x26>
-  cc:	00 c0       	rjmp	.+0      	; 0xce <main+0x30>
-  ce:	00 00       	nop
+  bc:	2f ef       	ldi	r18, 0xFF	; 255
+  be:	33 ec       	ldi	r19, 0xC3	; 195
+  c0:	99 e0       	ldi	r25, 0x09	; 9
+  c2:	21 50       	subi	r18, 0x01	; 1
+  c4:	30 40       	sbci	r19, 0x00	; 0
+  c6:	90 40       	sbci	r25, 0x00	; 0
+  c8:	e1 f7       	brne	.-8      	; 0xc2 <main+0x24>
+  ca:	00 c0       	rjmp	.+0      	; 0xcc <main+0x2e>
+  cc:	00 00       	nop
 			_delay_ms(200); // 디바운싱(스위치 떨림 방지) 및 연속 입력 제한
 			while(PIND & (1 << PD3)); // 스위치에서 손을 뗄 때까지 대기
-  d0:	83 99       	sbic	0x10, 3	; 16
-  d2:	fe cf       	rjmp	.-4      	; 0xd0 <main+0x32>
+  ce:	83 99       	sbic	0x10, 3	; 16
+  d0:	fe cf       	rjmp	.-4      	; 0xce <main+0x30>
 		}
 
 		// --- PD4 스위치: 오른쪽으로 쉬프트 ---
 		if (PIND & (1 << PD4))
-  d4:	84 9b       	sbis	0x10, 4	; 16
-  d6:	11 c0       	rjmp	.+34     	; 0xfa <main+0x5c>
+  d2:	84 9b       	sbis	0x10, 4	; 16
+  d4:	11 c0       	rjmp	.+34     	; 0xf8 <main+0x5a>
 		{
 			// 가장 오른쪽(0x01)에 도달하면 다시 0x80으로 순환 (선택 사항)
-			if (led_pattern == 0x01) led_pattern = 0x80;
-  d8:	81 30       	cpi	r24, 0x01	; 1
-  da:	11 f0       	breq	.+4      	; 0xe0 <main+0x42>
-			else led_pattern >>= 1;
-  dc:	86 95       	lsr	r24
-  de:	01 c0       	rjmp	.+2      	; 0xe2 <main+0x44>
+			if (led_pattern == 0x80) led_pattern = 0x01;
+  d6:	80 38       	cpi	r24, 0x80	; 128
+  d8:	11 f0       	breq	.+4      	; 0xde <main+0x40>
+			else led_pattern <<= 1;
+  da:	88 0f       	add	r24, r24
+  dc:	01 c0       	rjmp	.+2      	; 0xe0 <main+0x42>
 
 		// --- PD4 스위치: 오른쪽으로 쉬프트 ---
 		if (PIND & (1 << PD4))
 		{
 			// 가장 오른쪽(0x01)에 도달하면 다시 0x80으로 순환 (선택 사항)
-			if (led_pattern == 0x01) led_pattern = 0x80;
-  e0:	80 e8       	ldi	r24, 0x80	; 128
-			else led_pattern >>= 1;
+			if (led_pattern == 0x80) led_pattern = 0x01;
+  de:	81 e0       	ldi	r24, 0x01	; 1
+			else led_pattern <<= 1;
 			
 			PORTA = led_pattern;
-  e2:	8b bb       	out	0x1b, r24	; 27
-  e4:	2f ef       	ldi	r18, 0xFF	; 255
-  e6:	33 ec       	ldi	r19, 0xC3	; 195
-  e8:	99 e0       	ldi	r25, 0x09	; 9
-  ea:	21 50       	subi	r18, 0x01	; 1
-  ec:	30 40       	sbci	r19, 0x00	; 0
-  ee:	90 40       	sbci	r25, 0x00	; 0
-  f0:	e1 f7       	brne	.-8      	; 0xea <main+0x4c>
-  f2:	00 c0       	rjmp	.+0      	; 0xf4 <main+0x56>
-  f4:	00 00       	nop
+  e0:	8b bb       	out	0x1b, r24	; 27
+  e2:	2f ef       	ldi	r18, 0xFF	; 255
+  e4:	33 ec       	ldi	r19, 0xC3	; 195
+  e6:	99 e0       	ldi	r25, 0x09	; 9
+  e8:	21 50       	subi	r18, 0x01	; 1
+  ea:	30 40       	sbci	r19, 0x00	; 0
+  ec:	90 40       	sbci	r25, 0x00	; 0
+  ee:	e1 f7       	brne	.-8      	; 0xe8 <main+0x4a>
+  f0:	00 c0       	rjmp	.+0      	; 0xf2 <main+0x54>
+  f2:	00 00       	nop
 			_delay_ms(200);
 			while(PIND & (1 << PD4));
-  f6:	84 99       	sbic	0x10, 4	; 16
-  f8:	fe cf       	rjmp	.-4      	; 0xf6 <main+0x58>
+  f4:	84 99       	sbic	0x10, 4	; 16
+  f6:	fe cf       	rjmp	.-4      	; 0xf4 <main+0x56>
 		}
 
 		// --- PD5 스위치: LED 전체를 왼쪽 끝(MSB)으로 강제 이동 ---
 		if (PIND & (1 << PD5))
-  fa:	85 9b       	sbis	0x10, 5	; 16
-  fc:	0e c0       	rjmp	.+28     	; 0x11a <main+0x7c>
+  f8:	85 9b       	sbis	0x10, 5	; 16
+  fa:	0e c0       	rjmp	.+28     	; 0x118 <main+0x7a>
 		{
-			led_pattern = 0x80; // 1000 0000
+			led_pattern = 0x01; // 1000 0000
 			PORTA = led_pattern;
-  fe:	80 e8       	ldi	r24, 0x80	; 128
- 100:	8b bb       	out	0x1b, r24	; 27
- 102:	2f ef       	ldi	r18, 0xFF	; 255
- 104:	33 ec       	ldi	r19, 0xC3	; 195
- 106:	89 e0       	ldi	r24, 0x09	; 9
- 108:	21 50       	subi	r18, 0x01	; 1
- 10a:	30 40       	sbci	r19, 0x00	; 0
- 10c:	80 40       	sbci	r24, 0x00	; 0
- 10e:	e1 f7       	brne	.-8      	; 0x108 <main+0x6a>
- 110:	00 c0       	rjmp	.+0      	; 0x112 <main+0x74>
- 112:	00 00       	nop
+  fc:	81 e0       	ldi	r24, 0x01	; 1
+  fe:	8b bb       	out	0x1b, r24	; 27
+ 100:	2f ef       	ldi	r18, 0xFF	; 255
+ 102:	33 ec       	ldi	r19, 0xC3	; 195
+ 104:	89 e0       	ldi	r24, 0x09	; 9
+ 106:	21 50       	subi	r18, 0x01	; 1
+ 108:	30 40       	sbci	r19, 0x00	; 0
+ 10a:	80 40       	sbci	r24, 0x00	; 0
+ 10c:	e1 f7       	brne	.-8      	; 0x106 <main+0x68>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <main+0x72>
+ 110:	00 00       	nop
 			_delay_ms(200);
 			while(PIND & (1 << PD5));
- 114:	85 99       	sbic	0x10, 5	; 16
- 116:	fe cf       	rjmp	.-4      	; 0x114 <main+0x76>
+ 112:	85 99       	sbic	0x10, 5	; 16
+ 114:	fe cf       	rjmp	.-4      	; 0x112 <main+0x74>
 		}
 
 		// --- PD5 스위치: LED 전체를 왼쪽 끝(MSB)으로 강제 이동 ---
 		if (PIND & (1 << PD5))
 		{
-			led_pattern = 0x80; // 1000 0000
- 118:	80 e8       	ldi	r24, 0x80	; 128
+			led_pattern = 0x01; // 1000 0000
+ 116:	81 e0       	ldi	r24, 0x01	; 1
 			_delay_ms(200);
 			while(PIND & (1 << PD5));
 		}
 
 		// --- PD6 스위치: LED 전체를 오른쪽 끝(LSB)으로 강제 이동 ---
 		if (PIND & (1 << PD6))
- 11a:	86 9b       	sbis	0x10, 6	; 16
- 11c:	c8 cf       	rjmp	.-112    	; 0xae <main+0x10>
+ 118:	86 9b       	sbis	0x10, 6	; 16
+ 11a:	c8 cf       	rjmp	.-112    	; 0xac <main+0xe>
 		{
-			led_pattern = 0x01; // 0000 0001
+			led_pattern = 0x80; // 0000 0001
 			PORTA = led_pattern;
- 11e:	81 e0       	ldi	r24, 0x01	; 1
- 120:	8b bb       	out	0x1b, r24	; 27
- 122:	9f ef       	ldi	r25, 0xFF	; 255
- 124:	23 ec       	ldi	r18, 0xC3	; 195
- 126:	39 e0       	ldi	r19, 0x09	; 9
- 128:	91 50       	subi	r25, 0x01	; 1
- 12a:	20 40       	sbci	r18, 0x00	; 0
- 12c:	30 40       	sbci	r19, 0x00	; 0
- 12e:	e1 f7       	brne	.-8      	; 0x128 <main+0x8a>
- 130:	00 c0       	rjmp	.+0      	; 0x132 <main+0x94>
- 132:	00 00       	nop
+ 11c:	80 e8       	ldi	r24, 0x80	; 128
+ 11e:	8b bb       	out	0x1b, r24	; 27
+ 120:	9f ef       	ldi	r25, 0xFF	; 255
+ 122:	23 ec       	ldi	r18, 0xC3	; 195
+ 124:	39 e0       	ldi	r19, 0x09	; 9
+ 126:	91 50       	subi	r25, 0x01	; 1
+ 128:	20 40       	sbci	r18, 0x00	; 0
+ 12a:	30 40       	sbci	r19, 0x00	; 0
+ 12c:	e1 f7       	brne	.-8      	; 0x126 <main+0x88>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <main+0x92>
+ 130:	00 00       	nop
+		}
+
+		// --- PD6 스위치: LED 전체를 오른쪽 끝(LSB)으로 강제 이동 ---
+		if (PIND & (1 << PD6))
+		{
+			led_pattern = 0x80; // 0000 0001
+ 132:	80 e8       	ldi	r24, 0x80	; 128
+			PORTA = led_pattern;
 			_delay_ms(200);
 			while(PIND & (1 << PD6));
  134:	86 99       	sbic	0x10, 6	; 16
- 136:	fe cf       	rjmp	.-4      	; 0x134 <main+0x96>
+ 136:	fd cf       	rjmp	.-6      	; 0x132 <main+0x94>
  138:	b9 cf       	rjmp	.-142    	; 0xac <main+0xe>
 
 0000013a <_exit>:
