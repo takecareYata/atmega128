@@ -35,24 +35,10 @@ void led_left_on(void)
 
 void led_odd_on(void)
 {
-	if(PORTA == 0xAA)
-	{
-		PORTA >>= 1;
-	}
-	else
-	{
-		PORTA = 0x55;
-	}
+	PORTA =  1 << 1 | 1 << 3 | 1 << 5 | 1 << 7;
 }
 
 void led_even_on(void)
 {
-	if(PORTA == 0x55)
-	{
-		PORTA <<= 1;
-	}
-	else
-	{
-		PORTA = 0xAA;
-	}
+	PORTA =  1 << 0 | 1 << 2 | 1 << 4 | 1 << 6;
 }

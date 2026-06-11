@@ -30,8 +30,8 @@ int get_button(int butoon_num, int button_pin)
 	}
 	else if(current_state == BUTTON_RELEASE && button_status[butoon_num] == BUTTON_PRESS)
 	{
-		button_status[butoon_num] = BUTTON_RELEASE;
 		_delay_ms(15); // noise 지나가기를 기다린다.
+		button_status[butoon_num] = BUTTON_RELEASE;
 		return 1;
 	}
 	
