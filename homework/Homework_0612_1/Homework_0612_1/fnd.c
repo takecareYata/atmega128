@@ -142,6 +142,8 @@ void fnd_stopwatch(void)
 		stopwatch_ms_count = 0;
 		stopwatch_sec_count = 0;
 		stopwatch_state = !stopwatch_state;
+		FND_DIGIT_PORT = 0xf0;
+		FND_DATA_PORT = fnd_font[0];
 	}
 	
 	if(stopwatch_state)
