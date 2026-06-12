@@ -40,8 +40,10 @@ int main(void)
 			{
 				button0_state = 0;
 			}
+#if 0
 			flower_on_flag = 1;
 			flower_off_flag = 1;
+#endif
 		}
 		
 		led_cont_ary[button0_state]();

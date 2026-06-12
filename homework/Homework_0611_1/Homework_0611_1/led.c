@@ -7,8 +7,10 @@
 
 #include "led.h"
 
+#if 0
 int flower_on_flag = 0;
 int flower_off_flag = 0;
+#endif
 
 void init_led(void)
 {
@@ -116,6 +118,7 @@ void led_flower_on(void)
 		_delay_ms(30);
 	}
 #endif
+#if 0
 	if (flower_on_flag == 1)
 	{
 		PORTA = 0x0;
@@ -125,7 +128,12 @@ void led_flower_on(void)
 	{
 		PORTA = 0x00;
 	}
+#endif
 	static int i = 0;
+	if (i == 0)
+	{
+		PORTA = 0x00;
+	}
 	PORTA |= 1 << (4 - i - 1) | 1 << (4 + i);
 	_delay_ms(30);
 	i = (i + 1) % 4;
@@ -141,6 +149,7 @@ void led_flower_off(void)
 		_delay_ms(30);
 	}
 #endif
+#if 0
 	if (flower_off_flag == 1)
 	{
 		PORTA = 0xff;
@@ -150,7 +159,12 @@ void led_flower_off(void)
 	{
 		PORTA = 0xff;
 	}
+#endif
 	static int i = 0;
+	if (i == 0)
+	{
+		PORTA = 0xff;
+	}
 	PORTA &= ~(1 << (7 - i) | 1 << (i));
 	_delay_ms(30);
 	i = (i + 1) % 4;

@@ -24,8 +24,8 @@ extern void led_shift_right_keep_on(void);
 extern void led_shift_left_keep_on(void);
 extern void led_flower_on(void);
 extern void led_flower_off(void);
-
+#if 0
 extern int flower_on_flag;
 extern int flower_off_flag;
-
+#endif
 #endif /* LED_H_ */
