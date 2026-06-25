@@ -1,0 +1,828 @@
+
+08.PWM_SERVO_PIEZO_BUZZER.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000006e  00800100  000004c8  0000055c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000004c8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000a  0080016e  0080016e  000005ca  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000005ca  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000005fc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000b0  00000000  00000000  0000063c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000147a  00000000  00000000  000006ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000c06  00000000  00000000  00001b66  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000956  00000000  00000000  0000276c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000014c  00000000  00000000  000030c4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005a9  00000000  00000000  00003210  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000913  00000000  00000000  000037b9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000080  00000000  00000000  000040cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	60 c0       	rjmp	.+192    	; 0xc6 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	5e c0       	rjmp	.+188    	; 0xc6 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	5c c0       	rjmp	.+184    	; 0xc6 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	5a c0       	rjmp	.+180    	; 0xc6 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	58 c0       	rjmp	.+176    	; 0xc6 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	56 c0       	rjmp	.+172    	; 0xc6 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	54 c0       	rjmp	.+168    	; 0xc6 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	52 c0       	rjmp	.+164    	; 0xc6 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	50 c0       	rjmp	.+160    	; 0xc6 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	4e c0       	rjmp	.+156    	; 0xc6 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	4c c0       	rjmp	.+152    	; 0xc6 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	4a c0       	rjmp	.+148    	; 0xc6 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	48 c0       	rjmp	.+144    	; 0xc6 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	46 c0       	rjmp	.+140    	; 0xc6 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	44 c0       	rjmp	.+136    	; 0xc6 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	42 c0       	rjmp	.+132    	; 0xc6 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	40 c0       	rjmp	.+128    	; 0xc6 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	3e c0       	rjmp	.+124    	; 0xc6 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	3c c0       	rjmp	.+120    	; 0xc6 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	3a c0       	rjmp	.+116    	; 0xc6 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	38 c0       	rjmp	.+112    	; 0xc6 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	36 c0       	rjmp	.+108    	; 0xc6 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	34 c0       	rjmp	.+104    	; 0xc6 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	32 c0       	rjmp	.+100    	; 0xc6 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	30 c0       	rjmp	.+96     	; 0xc6 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	2e c0       	rjmp	.+92     	; 0xc6 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	2c c0       	rjmp	.+88     	; 0xc6 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	2a c0       	rjmp	.+84     	; 0xc6 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	28 c0       	rjmp	.+80     	; 0xc6 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	26 c0       	rjmp	.+76     	; 0xc6 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	24 c0       	rjmp	.+72     	; 0xc6 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	22 c0       	rjmp	.+68     	; 0xc6 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	20 c0       	rjmp	.+64     	; 0xc6 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	1e c0       	rjmp	.+60     	; 0xc6 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	e8 ec       	ldi	r30, 0xC8	; 200
+  a0:	f4 e0       	ldi	r31, 0x04	; 4
+  a2:	00 e0       	ldi	r16, 0x00	; 0
+  a4:	0b bf       	out	0x3b, r16	; 59
+  a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+  a8:	07 90       	elpm	r0, Z+
+  aa:	0d 92       	st	X+, r0
+  ac:	ae 36       	cpi	r26, 0x6E	; 110
+  ae:	b1 07       	cpc	r27, r17
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+
+000000b2 <__do_clear_bss>:
+  b2:	21 e0       	ldi	r18, 0x01	; 1
+  b4:	ae e6       	ldi	r26, 0x6E	; 110
+  b6:	b1 e0       	ldi	r27, 0x01	; 1
+  b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
+
+000000ba <.do_clear_bss_loop>:
+  ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+  bc:	a8 37       	cpi	r26, 0x78	; 120
+  be:	b2 07       	cpc	r27, r18
+  c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+  c2:	94 d1       	rcall	.+808    	; 0x3ec <main>
+  c4:	ff c1       	rjmp	.+1022   	; 0x4c4 <_exit>
+
+000000c6 <__bad_interrupt>:
+  c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
+
+000000c8 <init_button>:
+int get_button(int button_num, int button_pin);
+
+// 버튼 초기화 방향설정(입력) 
+void init_button(void)
+{
+	BUTTON_DDR &= ~(1 << BUTTON0PIN | 1 << BUTTON1PIN | 1 << BUTTON2PIN | 1 << BUTTON3PIN);
+  c8:	81 b3       	in	r24, 0x11	; 17
+  ca:	87 78       	andi	r24, 0x87	; 135
+  cc:	81 bb       	out	0x11, r24	; 17
+  ce:	08 95       	ret
+
+000000d0 <get_button>:
+	};
+	// static 지역변수에 static을 선언하면 함수를 빠져나와 다시 들어가도 이전값유지 
+	int current_state;
+	
+	// 1. button을 읽는다. 
+	current_state = BUTTON_PIN & (1 << button_pin);
+  d0:	20 b3       	in	r18, 0x10	; 16
+  d2:	42 2f       	mov	r20, r18
+  d4:	50 e0       	ldi	r21, 0x00	; 0
+  d6:	21 e0       	ldi	r18, 0x01	; 1
+  d8:	30 e0       	ldi	r19, 0x00	; 0
+  da:	02 c0       	rjmp	.+4      	; 0xe0 <get_button+0x10>
+  dc:	22 0f       	add	r18, r18
+  de:	33 1f       	adc	r19, r19
+  e0:	6a 95       	dec	r22
+  e2:	e2 f7       	brpl	.-8      	; 0xdc <get_button+0xc>
+  e4:	24 23       	and	r18, r20
+  e6:	35 23       	and	r19, r21
+	// 2. 버튼 상태 check 
+	if (current_state  && button_status[button_num] == BUTTON_RELEASE)  // 버튼이 처음 눌려진 상태 
+  e8:	21 15       	cp	r18, r1
+  ea:	31 05       	cpc	r19, r1
+  ec:	a1 f0       	breq	.+40     	; 0x116 <get_button+0x46>
+  ee:	fc 01       	movw	r30, r24
+  f0:	e2 59       	subi	r30, 0x92	; 146
+  f2:	fe 4f       	sbci	r31, 0xFE	; 254
+  f4:	40 81       	ld	r20, Z
+  f6:	41 11       	cpse	r20, r1
+  f8:	0e c0       	rjmp	.+28     	; 0x116 <get_button+0x46>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  fa:	ef e5       	ldi	r30, 0x5F	; 95
+  fc:	fa ee       	ldi	r31, 0xEA	; 234
+  fe:	31 97       	sbiw	r30, 0x01	; 1
+ 100:	f1 f7       	brne	.-4      	; 0xfe <get_button+0x2e>
+ 102:	00 c0       	rjmp	.+0      	; 0x104 <get_button+0x34>
+ 104:	00 00       	nop
+	{
+		_delay_ms(15);  // noise가 지나가기를 기다린다. 
+		button_status[button_num] =BUTTON_PRESS;  
+ 106:	fc 01       	movw	r30, r24
+ 108:	e2 59       	subi	r30, 0x92	; 146
+ 10a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 10c:	21 e0       	ldi	r18, 0x01	; 1
+ 10e:	20 83       	st	Z, r18
+		return 0;     // 아직은 완전히 눌렀다 뗀 상태가 아니다. 
+ 110:	80 e0       	ldi	r24, 0x00	; 0
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	08 95       	ret
+	}
+	else if (button_status[button_num] == BUTTON_PRESS && current_state == BUTTON_RELEASE)
+ 116:	fc 01       	movw	r30, r24
+ 118:	e2 59       	subi	r30, 0x92	; 146
+ 11a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 11c:	40 81       	ld	r20, Z
+ 11e:	41 30       	cpi	r20, 0x01	; 1
+ 120:	79 f4       	brne	.+30     	; 0x140 <get_button+0x70>
+ 122:	23 2b       	or	r18, r19
+ 124:	81 f4       	brne	.+32     	; 0x146 <get_button+0x76>
+ 126:	ef e5       	ldi	r30, 0x5F	; 95
+ 128:	fa ee       	ldi	r31, 0xEA	; 234
+ 12a:	31 97       	sbiw	r30, 0x01	; 1
+ 12c:	f1 f7       	brne	.-4      	; 0x12a <get_button+0x5a>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <get_button+0x60>
+ 130:	00 00       	nop
+	{  // 버튼이 이전에 눌려진 상태였으며 지금은 떼어진 상태 
+		_delay_ms(15);  // noise가 지나가기를 기다린다. 
+		button_status[button_num] = BUTTON_RELEASE;   // 다음 버튼을 체크 하기 위하여 초기화
+ 132:	fc 01       	movw	r30, r24
+ 134:	e2 59       	subi	r30, 0x92	; 146
+ 136:	fe 4f       	sbci	r31, 0xFE	; 254
+ 138:	10 82       	st	Z, r1
+
+		return 1;   // 완전히 1번 눌렀다 뗀 상태로 인정 한다. 
+ 13a:	81 e0       	ldi	r24, 0x01	; 1
+ 13c:	90 e0       	ldi	r25, 0x00	; 0
+ 13e:	08 95       	ret
+	}
+	
+	return 0;   // 버튼이 open 상태 이다. 
+ 140:	80 e0       	ldi	r24, 0x00	; 0
+ 142:	90 e0       	ldi	r25, 0x00	; 0
+ 144:	08 95       	ret
+ 146:	80 e0       	ldi	r24, 0x00	; 0
+ 148:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 14a:	08 95       	ret
+
+0000014c <check_stop_condition>:
+int power_on_step = 0;
+int open_buzzer_step = 0;
+
+int check_stop_condition(int current_btn) 
+{
+	if (get_button(current_btn, current_btn + 3)) 
+ 14c:	bc 01       	movw	r22, r24
+ 14e:	6d 5f       	subi	r22, 0xFD	; 253
+ 150:	7f 4f       	sbci	r23, 0xFF	; 255
+ 152:	be df       	rcall	.-132    	; 0xd0 <get_button>
+ 154:	00 97       	sbiw	r24, 0x00	; 0
+ 156:	51 f0       	breq	.+20     	; 0x16c <check_stop_condition+0x20>
+	{
+		OCR3A = 0;
+ 158:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 15c:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		play_state = 0;
+ 160:	10 92 77 01 	sts	0x0177, r1	; 0x800177 <play_state+0x1>
+ 164:	10 92 76 01 	sts	0x0176, r1	; 0x800176 <play_state>
+		return 1; 
+ 168:	81 e0       	ldi	r24, 0x01	; 1
+ 16a:	90 e0       	ldi	r25, 0x00	; 0
+	}
+	return 0;
+}
+ 16c:	08 95       	ret
+
+0000016e <power_on_melody>:
+
+void power_on_melody(void)
+{
+	power_on_step++;
+ 16e:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <power_on_step>
+ 172:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <power_on_step+0x1>
+ 176:	01 96       	adiw	r24, 0x01	; 1
+ 178:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <power_on_step+0x1>
+ 17c:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <power_on_step>
+	if (power_on_step > 5) power_on_step = 1;
+ 180:	06 97       	sbiw	r24, 0x06	; 6
+ 182:	34 f0       	brlt	.+12     	; 0x190 <power_on_melody+0x22>
+ 184:	81 e0       	ldi	r24, 0x01	; 1
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <power_on_step+0x1>
+ 18c:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <power_on_step>
+
+	switch (power_on_step) 
+ 190:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <power_on_step>
+ 194:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <power_on_step+0x1>
+ 198:	83 30       	cpi	r24, 0x03	; 3
+ 19a:	91 05       	cpc	r25, r1
+ 19c:	71 f1       	breq	.+92     	; 0x1fa <power_on_melody+0x8c>
+ 19e:	34 f4       	brge	.+12     	; 0x1ac <power_on_melody+0x3e>
+ 1a0:	81 30       	cpi	r24, 0x01	; 1
+ 1a2:	91 05       	cpc	r25, r1
+ 1a4:	51 f0       	breq	.+20     	; 0x1ba <power_on_melody+0x4c>
+ 1a6:	02 97       	sbiw	r24, 0x02	; 2
+ 1a8:	c1 f0       	breq	.+48     	; 0x1da <power_on_melody+0x6c>
+ 1aa:	4e c0       	rjmp	.+156    	; 0x248 <power_on_melody+0xda>
+ 1ac:	84 30       	cpi	r24, 0x04	; 4
+ 1ae:	91 05       	cpc	r25, r1
+ 1b0:	a1 f1       	breq	.+104    	; 0x21a <power_on_melody+0xac>
+ 1b2:	05 97       	sbiw	r24, 0x05	; 5
+ 1b4:	09 f4       	brne	.+2      	; 0x1b8 <power_on_melody+0x4a>
+ 1b6:	41 c0       	rjmp	.+130    	; 0x23a <power_on_melody+0xcc>
+ 1b8:	47 c0       	rjmp	.+142    	; 0x248 <power_on_melody+0xda>
+	{
+		case 1:
+		OCR3A = TONE_1KHZ;
+ 1ba:	87 ee       	ldi	r24, 0xE7	; 231
+ 1bc:	93 e0       	ldi	r25, 0x03	; 3
+ 1be:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 1c2:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 1c6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1c8:	8a e6       	ldi	r24, 0x6A	; 106
+ 1ca:	93 e0       	ldi	r25, 0x03	; 3
+ 1cc:	21 50       	subi	r18, 0x01	; 1
+ 1ce:	80 40       	sbci	r24, 0x00	; 0
+ 1d0:	90 40       	sbci	r25, 0x00	; 0
+ 1d2:	e1 f7       	brne	.-8      	; 0x1cc <power_on_melody+0x5e>
+ 1d4:	00 c0       	rjmp	.+0      	; 0x1d6 <power_on_melody+0x68>
+ 1d6:	00 00       	nop
+ 1d8:	37 c0       	rjmp	.+110    	; 0x248 <power_on_melody+0xda>
+		_delay_ms(70);
+		break;
+		case 2:
+		OCR3A = TONE_2KHZ;
+ 1da:	83 ef       	ldi	r24, 0xF3	; 243
+ 1dc:	91 e0       	ldi	r25, 0x01	; 1
+ 1de:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 1e2:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 1e6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1e8:	8a e6       	ldi	r24, 0x6A	; 106
+ 1ea:	93 e0       	ldi	r25, 0x03	; 3
+ 1ec:	21 50       	subi	r18, 0x01	; 1
+ 1ee:	80 40       	sbci	r24, 0x00	; 0
+ 1f0:	90 40       	sbci	r25, 0x00	; 0
+ 1f2:	e1 f7       	brne	.-8      	; 0x1ec <power_on_melody+0x7e>
+ 1f4:	00 c0       	rjmp	.+0      	; 0x1f6 <power_on_melody+0x88>
+ 1f6:	00 00       	nop
+ 1f8:	27 c0       	rjmp	.+78     	; 0x248 <power_on_melody+0xda>
+		_delay_ms(70);
+		break;
+		case 3:
+		OCR3A = TONE_3KHZ;
+ 1fa:	8c e4       	ldi	r24, 0x4C	; 76
+ 1fc:	91 e0       	ldi	r25, 0x01	; 1
+ 1fe:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 202:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 206:	2f ef       	ldi	r18, 0xFF	; 255
+ 208:	8a e6       	ldi	r24, 0x6A	; 106
+ 20a:	93 e0       	ldi	r25, 0x03	; 3
+ 20c:	21 50       	subi	r18, 0x01	; 1
+ 20e:	80 40       	sbci	r24, 0x00	; 0
+ 210:	90 40       	sbci	r25, 0x00	; 0
+ 212:	e1 f7       	brne	.-8      	; 0x20c <power_on_melody+0x9e>
+ 214:	00 c0       	rjmp	.+0      	; 0x216 <power_on_melody+0xa8>
+ 216:	00 00       	nop
+ 218:	17 c0       	rjmp	.+46     	; 0x248 <power_on_melody+0xda>
+		_delay_ms(70);
+		break;
+		case 4:
+		OCR3A = TONE_4KHZ;
+ 21a:	89 ef       	ldi	r24, 0xF9	; 249
+ 21c:	90 e0       	ldi	r25, 0x00	; 0
+ 21e:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 222:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 226:	2f ef       	ldi	r18, 0xFF	; 255
+ 228:	8a e6       	ldi	r24, 0x6A	; 106
+ 22a:	93 e0       	ldi	r25, 0x03	; 3
+ 22c:	21 50       	subi	r18, 0x01	; 1
+ 22e:	80 40       	sbci	r24, 0x00	; 0
+ 230:	90 40       	sbci	r25, 0x00	; 0
+ 232:	e1 f7       	brne	.-8      	; 0x22c <power_on_melody+0xbe>
+ 234:	00 c0       	rjmp	.+0      	; 0x236 <power_on_melody+0xc8>
+ 236:	00 00       	nop
+ 238:	07 c0       	rjmp	.+14     	; 0x248 <power_on_melody+0xda>
+		_delay_ms(70);
+		break;
+		case 5:
+		OCR3A = 0;
+ 23a:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 23e:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		delay_ms(3000);
+ 242:	88 eb       	ldi	r24, 0xB8	; 184
+ 244:	9b e0       	ldi	r25, 0x0B	; 11
+ 246:	30 d1       	rcall	.+608    	; 0x4a8 <delay_ms>
+		break;
+	}
+	OCR3A = 0;
+ 248:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 24c:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+	play_state = 0;
+ 250:	10 92 77 01 	sts	0x0177, r1	; 0x800177 <play_state+0x1>
+ 254:	10 92 76 01 	sts	0x0176, r1	; 0x800176 <play_state>
+ 258:	08 95       	ret
+
+0000025a <open_buzzer>:
+}
+
+void open_buzzer(void)
+{
+	open_buzzer_step++;
+ 25a:	80 91 72 01 	lds	r24, 0x0172	; 0x800172 <open_buzzer_step>
+ 25e:	90 91 73 01 	lds	r25, 0x0173	; 0x800173 <open_buzzer_step+0x1>
+ 262:	01 96       	adiw	r24, 0x01	; 1
+ 264:	90 93 73 01 	sts	0x0173, r25	; 0x800173 <open_buzzer_step+0x1>
+ 268:	80 93 72 01 	sts	0x0172, r24	; 0x800172 <open_buzzer_step>
+	if (open_buzzer_step > 5) open_buzzer_step = 1;
+ 26c:	06 97       	sbiw	r24, 0x06	; 6
+ 26e:	34 f0       	brlt	.+12     	; 0x27c <open_buzzer+0x22>
+ 270:	81 e0       	ldi	r24, 0x01	; 1
+ 272:	90 e0       	ldi	r25, 0x00	; 0
+ 274:	90 93 73 01 	sts	0x0173, r25	; 0x800173 <open_buzzer_step+0x1>
+ 278:	80 93 72 01 	sts	0x0172, r24	; 0x800172 <open_buzzer_step>
+
+	switch (open_buzzer_step) 
+ 27c:	80 91 72 01 	lds	r24, 0x0172	; 0x800172 <open_buzzer_step>
+ 280:	90 91 73 01 	lds	r25, 0x0173	; 0x800173 <open_buzzer_step+0x1>
+ 284:	83 30       	cpi	r24, 0x03	; 3
+ 286:	91 05       	cpc	r25, r1
+ 288:	71 f1       	breq	.+92     	; 0x2e6 <open_buzzer+0x8c>
+ 28a:	34 f4       	brge	.+12     	; 0x298 <open_buzzer+0x3e>
+ 28c:	81 30       	cpi	r24, 0x01	; 1
+ 28e:	91 05       	cpc	r25, r1
+ 290:	51 f0       	breq	.+20     	; 0x2a6 <open_buzzer+0x4c>
+ 292:	02 97       	sbiw	r24, 0x02	; 2
+ 294:	c1 f0       	breq	.+48     	; 0x2c6 <open_buzzer+0x6c>
+ 296:	4e c0       	rjmp	.+156    	; 0x334 <open_buzzer+0xda>
+ 298:	84 30       	cpi	r24, 0x04	; 4
+ 29a:	91 05       	cpc	r25, r1
+ 29c:	a1 f1       	breq	.+104    	; 0x306 <open_buzzer+0xac>
+ 29e:	05 97       	sbiw	r24, 0x05	; 5
+ 2a0:	09 f4       	brne	.+2      	; 0x2a4 <open_buzzer+0x4a>
+ 2a2:	41 c0       	rjmp	.+130    	; 0x326 <open_buzzer+0xcc>
+ 2a4:	47 c0       	rjmp	.+142    	; 0x334 <open_buzzer+0xda>
+	{
+		case 1:
+		OCR3A = TONE_261HZ;
+ 2a6:	86 ef       	ldi	r24, 0xF6	; 246
+ 2a8:	9e e0       	ldi	r25, 0x0E	; 14
+ 2aa:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 2ae:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 2b2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2b4:	8a e6       	ldi	r24, 0x6A	; 106
+ 2b6:	93 e0       	ldi	r25, 0x03	; 3
+ 2b8:	21 50       	subi	r18, 0x01	; 1
+ 2ba:	80 40       	sbci	r24, 0x00	; 0
+ 2bc:	90 40       	sbci	r25, 0x00	; 0
+ 2be:	e1 f7       	brne	.-8      	; 0x2b8 <open_buzzer+0x5e>
+ 2c0:	00 c0       	rjmp	.+0      	; 0x2c2 <open_buzzer+0x68>
+ 2c2:	00 00       	nop
+ 2c4:	37 c0       	rjmp	.+110    	; 0x334 <open_buzzer+0xda>
+		_delay_ms(70);
+		break;
+		case 2:
+		OCR3A = TONE_329HZ;
+ 2c6:	8e ed       	ldi	r24, 0xDE	; 222
+ 2c8:	9b e0       	ldi	r25, 0x0B	; 11
+ 2ca:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 2ce:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 2d2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2d4:	8a e6       	ldi	r24, 0x6A	; 106
+ 2d6:	93 e0       	ldi	r25, 0x03	; 3
+ 2d8:	21 50       	subi	r18, 0x01	; 1
+ 2da:	80 40       	sbci	r24, 0x00	; 0
+ 2dc:	90 40       	sbci	r25, 0x00	; 0
+ 2de:	e1 f7       	brne	.-8      	; 0x2d8 <open_buzzer+0x7e>
+ 2e0:	00 c0       	rjmp	.+0      	; 0x2e2 <open_buzzer+0x88>
+ 2e2:	00 00       	nop
+ 2e4:	27 c0       	rjmp	.+78     	; 0x334 <open_buzzer+0xda>
+		_delay_ms(70);
+		break;
+		case 3:
+		OCR3A = TONE_392HZ;
+ 2e6:	86 ef       	ldi	r24, 0xF6	; 246
+ 2e8:	99 e0       	ldi	r25, 0x09	; 9
+ 2ea:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 2ee:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 2f2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2f4:	8a e6       	ldi	r24, 0x6A	; 106
+ 2f6:	93 e0       	ldi	r25, 0x03	; 3
+ 2f8:	21 50       	subi	r18, 0x01	; 1
+ 2fa:	80 40       	sbci	r24, 0x00	; 0
+ 2fc:	90 40       	sbci	r25, 0x00	; 0
+ 2fe:	e1 f7       	brne	.-8      	; 0x2f8 <open_buzzer+0x9e>
+ 300:	00 c0       	rjmp	.+0      	; 0x302 <open_buzzer+0xa8>
+ 302:	00 00       	nop
+ 304:	17 c0       	rjmp	.+46     	; 0x334 <open_buzzer+0xda>
+		_delay_ms(70);
+		break;
+		case 4:
+		OCR3A = TONE_554HZ;
+ 306:	8c e0       	ldi	r24, 0x0C	; 12
+ 308:	97 e0       	ldi	r25, 0x07	; 7
+ 30a:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 30e:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 312:	2f ef       	ldi	r18, 0xFF	; 255
+ 314:	8a e6       	ldi	r24, 0x6A	; 106
+ 316:	93 e0       	ldi	r25, 0x03	; 3
+ 318:	21 50       	subi	r18, 0x01	; 1
+ 31a:	80 40       	sbci	r24, 0x00	; 0
+ 31c:	90 40       	sbci	r25, 0x00	; 0
+ 31e:	e1 f7       	brne	.-8      	; 0x318 <open_buzzer+0xbe>
+ 320:	00 c0       	rjmp	.+0      	; 0x322 <open_buzzer+0xc8>
+ 322:	00 00       	nop
+ 324:	07 c0       	rjmp	.+14     	; 0x334 <open_buzzer+0xda>
+		_delay_ms(70);
+		break;
+		case 5:
+		OCR3A = 0;
+ 326:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 32a:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		delay_ms(3000);
+ 32e:	88 eb       	ldi	r24, 0xB8	; 184
+ 330:	9b e0       	ldi	r25, 0x0B	; 11
+ 332:	ba d0       	rcall	.+372    	; 0x4a8 <delay_ms>
+		break;
+	}
+	
+	OCR3A = 0;
+ 334:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 338:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+	play_state = 0;
+ 33c:	10 92 77 01 	sts	0x0177, r1	; 0x800177 <play_state+0x1>
+ 340:	10 92 76 01 	sts	0x0176, r1	; 0x800176 <play_state>
+ 344:	08 95       	ret
+
+00000346 <drum_washing_stop_melody>:
+}
+
+void drum_washing_stop_melody(void) 
+{
+ 346:	ef 92       	push	r14
+ 348:	ff 92       	push	r15
+ 34a:	0f 93       	push	r16
+ 34c:	1f 93       	push	r17
+ 34e:	cf 93       	push	r28
+ 350:	df 93       	push	r29
+	int *tone = (int *)LG_Washer_Tune;
+	int *beats = (int *)LG_Washer_Beats;
+ 352:	00 e0       	ldi	r16, 0x00	; 0
+ 354:	11 e0       	ldi	r17, 0x01	; 1
+	play_state = 0;
+}
+
+void drum_washing_stop_melody(void) 
+{
+	int *tone = (int *)LG_Washer_Tune;
+ 356:	0f 2e       	mov	r0, r31
+ 358:	f6 e3       	ldi	r31, 0x36	; 54
+ 35a:	ef 2e       	mov	r14, r31
+ 35c:	f1 e0       	ldi	r31, 0x01	; 1
+ 35e:	ff 2e       	mov	r15, r31
+ 360:	f0 2d       	mov	r31, r0
+	int *beats = (int *)LG_Washer_Beats;
+	
+	while(*tone != '\0') 
+ 362:	34 c0       	rjmp	.+104    	; 0x3cc <drum_washing_stop_melody+0x86>
+	{
+		OCR3A = *tone;
+ 364:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 368:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		
+		for(int t = 0; t < *beats; t++) 
+ 36c:	c0 e0       	ldi	r28, 0x00	; 0
+ 36e:	d0 e0       	ldi	r29, 0x00	; 0
+ 370:	0c c0       	rjmp	.+24     	; 0x38a <drum_washing_stop_melody+0x44>
+ 372:	8f e9       	ldi	r24, 0x9F	; 159
+ 374:	9f e0       	ldi	r25, 0x0F	; 15
+ 376:	01 97       	sbiw	r24, 0x01	; 1
+ 378:	f1 f7       	brne	.-4      	; 0x376 <drum_washing_stop_melody+0x30>
+ 37a:	00 c0       	rjmp	.+0      	; 0x37c <drum_washing_stop_melody+0x36>
+ 37c:	00 00       	nop
+		{
+			_delay_ms(1);
+			if(check_stop_condition(BUTTON2)) return;
+ 37e:	82 e0       	ldi	r24, 0x02	; 2
+ 380:	90 e0       	ldi	r25, 0x00	; 0
+ 382:	e4 de       	rcall	.-568    	; 0x14c <check_stop_condition>
+ 384:	89 2b       	or	r24, r25
+ 386:	59 f5       	brne	.+86     	; 0x3de <drum_washing_stop_melody+0x98>
+	
+	while(*tone != '\0') 
+	{
+		OCR3A = *tone;
+		
+		for(int t = 0; t < *beats; t++) 
+ 388:	21 96       	adiw	r28, 0x01	; 1
+ 38a:	f8 01       	movw	r30, r16
+ 38c:	80 81       	ld	r24, Z
+ 38e:	91 81       	ldd	r25, Z+1	; 0x01
+ 390:	c8 17       	cp	r28, r24
+ 392:	d9 07       	cpc	r29, r25
+ 394:	74 f3       	brlt	.-36     	; 0x372 <drum_washing_stop_melody+0x2c>
+		{
+			_delay_ms(1);
+			if(check_stop_condition(BUTTON2)) return;
+		}
+		
+		tone++;
+ 396:	f2 e0       	ldi	r31, 0x02	; 2
+ 398:	ef 0e       	add	r14, r31
+ 39a:	f1 1c       	adc	r15, r1
+		beats++;
+ 39c:	0e 5f       	subi	r16, 0xFE	; 254
+ 39e:	1f 4f       	sbci	r17, 0xFF	; 255
+		OCR3A = 0;
+ 3a0:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 3a4:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		
+		for(int t = 0; t < 10; t++) 
+ 3a8:	c0 e0       	ldi	r28, 0x00	; 0
+ 3aa:	d0 e0       	ldi	r29, 0x00	; 0
+ 3ac:	0c c0       	rjmp	.+24     	; 0x3c6 <drum_washing_stop_melody+0x80>
+ 3ae:	8f e9       	ldi	r24, 0x9F	; 159
+ 3b0:	9f e0       	ldi	r25, 0x0F	; 15
+ 3b2:	01 97       	sbiw	r24, 0x01	; 1
+ 3b4:	f1 f7       	brne	.-4      	; 0x3b2 <drum_washing_stop_melody+0x6c>
+ 3b6:	00 c0       	rjmp	.+0      	; 0x3b8 <drum_washing_stop_melody+0x72>
+ 3b8:	00 00       	nop
+		{
+			_delay_ms(1);
+			if(check_stop_condition(BUTTON2)) return;
+ 3ba:	82 e0       	ldi	r24, 0x02	; 2
+ 3bc:	90 e0       	ldi	r25, 0x00	; 0
+ 3be:	c6 de       	rcall	.-628    	; 0x14c <check_stop_condition>
+ 3c0:	89 2b       	or	r24, r25
+ 3c2:	69 f4       	brne	.+26     	; 0x3de <drum_washing_stop_melody+0x98>
+		
+		tone++;
+		beats++;
+		OCR3A = 0;
+		
+		for(int t = 0; t < 10; t++) 
+ 3c4:	21 96       	adiw	r28, 0x01	; 1
+ 3c6:	ca 30       	cpi	r28, 0x0A	; 10
+ 3c8:	d1 05       	cpc	r29, r1
+ 3ca:	8c f3       	brlt	.-30     	; 0x3ae <drum_washing_stop_melody+0x68>
+void drum_washing_stop_melody(void) 
+{
+	int *tone = (int *)LG_Washer_Tune;
+	int *beats = (int *)LG_Washer_Beats;
+	
+	while(*tone != '\0') 
+ 3cc:	f7 01       	movw	r30, r14
+ 3ce:	80 81       	ld	r24, Z
+ 3d0:	91 81       	ldd	r25, Z+1	; 0x01
+ 3d2:	00 97       	sbiw	r24, 0x00	; 0
+ 3d4:	39 f6       	brne	.-114    	; 0x364 <drum_washing_stop_melody+0x1e>
+			_delay_ms(1);
+			if(check_stop_condition(BUTTON2)) return;
+		}
+	}
+	
+	play_state = 0;
+ 3d6:	10 92 77 01 	sts	0x0177, r1	; 0x800177 <play_state+0x1>
+ 3da:	10 92 76 01 	sts	0x0176, r1	; 0x800176 <play_state>
+}
+ 3de:	df 91       	pop	r29
+ 3e0:	cf 91       	pop	r28
+ 3e2:	1f 91       	pop	r17
+ 3e4:	0f 91       	pop	r16
+ 3e6:	ff 90       	pop	r15
+ 3e8:	ef 90       	pop	r14
+ 3ea:	08 95       	ret
+
+000003ec <main>:
+
+int main(void)
+{
+	init_speaker();
+ 3ec:	4d d0       	rcall	.+154    	; 0x488 <init_speaker>
+	init_button();
+ 3ee:	6c de       	rcall	.-808    	; 0xc8 <init_button>
+ 3f0:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <play_state>
+	
+	while (1)
+	{
+	
+		if (play_state == 0) {
+ 3f4:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <play_state+0x1>
+ 3f8:	89 2b       	or	r24, r25
+ 3fa:	49 f5       	brne	.+82     	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+ 3fc:	63 e0       	ldi	r22, 0x03	; 3
+			if (get_button(BUTTON0, BUTTON0PIN)) 
+ 3fe:	70 e0       	ldi	r23, 0x00	; 0
+ 400:	80 e0       	ldi	r24, 0x00	; 0
+ 402:	90 e0       	ldi	r25, 0x00	; 0
+ 404:	65 de       	rcall	.-822    	; 0xd0 <get_button>
+ 406:	89 2b       	or	r24, r25
+ 408:	39 f0       	breq	.+14     	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+ 40a:	81 e0       	ldi	r24, 0x01	; 1
+			{ 
+				play_state = 1;
+ 40c:	90 e0       	ldi	r25, 0x00	; 0
+ 40e:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <play_state+0x1>
+ 412:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <play_state>
+ 416:	1b c0       	rjmp	.+54     	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+ 418:	64 e0       	ldi	r22, 0x04	; 4
+			}
+			else if (get_button(BUTTON1, BUTTON1PIN)) 
+ 41a:	70 e0       	ldi	r23, 0x00	; 0
+ 41c:	81 e0       	ldi	r24, 0x01	; 1
+ 41e:	90 e0       	ldi	r25, 0x00	; 0
+ 420:	57 de       	rcall	.-850    	; 0xd0 <get_button>
+ 422:	89 2b       	or	r24, r25
+ 424:	39 f0       	breq	.+14     	; 0x434 <__LOCK_REGION_LENGTH__+0x34>
+ 426:	82 e0       	ldi	r24, 0x02	; 2
+			{
+				play_state = 2;
+ 428:	90 e0       	ldi	r25, 0x00	; 0
+ 42a:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <play_state+0x1>
+ 42e:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <play_state>
+ 432:	0d c0       	rjmp	.+26     	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+ 434:	65 e0       	ldi	r22, 0x05	; 5
+			}
+			else if (get_button(BUTTON2, BUTTON2PIN)) 
+ 436:	70 e0       	ldi	r23, 0x00	; 0
+ 438:	82 e0       	ldi	r24, 0x02	; 2
+ 43a:	90 e0       	ldi	r25, 0x00	; 0
+ 43c:	49 de       	rcall	.-878    	; 0xd0 <get_button>
+ 43e:	89 2b       	or	r24, r25
+ 440:	31 f0       	breq	.+12     	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+ 442:	83 e0       	ldi	r24, 0x03	; 3
+			{ 
+				play_state = 3;
+ 444:	90 e0       	ldi	r25, 0x00	; 0
+ 446:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <play_state+0x1>
+ 44a:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <play_state>
+ 44e:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <play_state>
+			}
+		}
+		
+		switch(play_state) {
+ 452:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <play_state+0x1>
+ 456:	82 30       	cpi	r24, 0x02	; 2
+ 458:	91 05       	cpc	r25, r1
+ 45a:	39 f0       	breq	.+14     	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+ 45c:	83 30       	cpi	r24, 0x03	; 3
+ 45e:	91 05       	cpc	r25, r1
+ 460:	31 f0       	breq	.+12     	; 0x46e <__LOCK_REGION_LENGTH__+0x6e>
+ 462:	01 97       	sbiw	r24, 0x01	; 1
+			case 1:
+			power_on_melody();
+ 464:	31 f4       	brne	.+12     	; 0x472 <__LOCK_REGION_LENGTH__+0x72>
+ 466:	83 de       	rcall	.-762    	; 0x16e <power_on_melody>
+			break;
+ 468:	08 c0       	rjmp	.+16     	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+			case 2:
+			open_buzzer();
+ 46a:	f7 de       	rcall	.-530    	; 0x25a <open_buzzer>
+ 46c:	06 c0       	rjmp	.+12     	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+			break;
+ 46e:	6b df       	rcall	.-298    	; 0x346 <drum_washing_stop_melody>
+			case 3:
+			drum_washing_stop_melody();
+ 470:	04 c0       	rjmp	.+8      	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+ 472:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+			break;
+			default:
+			OCR3A = 0; 
+ 476:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 47a:	8f e9       	ldi	r24, 0x9F	; 159
+ 47c:	9f e0       	ldi	r25, 0x0F	; 15
+ 47e:	01 97       	sbiw	r24, 0x01	; 1
+ 480:	f1 f7       	brne	.-4      	; 0x47e <__LOCK_REGION_LENGTH__+0x7e>
+ 482:	00 c0       	rjmp	.+0      	; 0x484 <__LOCK_REGION_LENGTH__+0x84>
+ 484:	00 00       	nop
+ 486:	b4 cf       	rjmp	.-152    	; 0x3f0 <main+0x4>
+
+00000488 <init_speaker>:
+ 488:	82 b1       	in	r24, 0x02	; 2
+ 48a:	88 60       	ori	r24, 0x08	; 8
+		OCR3A = 1136;
+		_delay_ms(100);
+		OCR3A = 0;
+		_delay_ms(20);
+	}
+}
+ 48c:	82 b9       	out	0x02, r24	; 2
+ 48e:	80 e4       	ldi	r24, 0x40	; 64
+ 490:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <__TEXT_REGION_LENGTH__+0x7e008b>
+ 494:	8a e0       	ldi	r24, 0x0A	; 10
+ 496:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7e008a>
+ 49a:	10 92 8c 00 	sts	0x008C, r1	; 0x80008c <__TEXT_REGION_LENGTH__+0x7e008c>
+ 49e:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+ 4a2:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+ 4a6:	08 95       	ret
+
+000004a8 <delay_ms>:
+
+void delay_ms(int ms)
+{
+	while(ms-- != 0)_delay_ms(1);
+ 4a8:	07 c0       	rjmp	.+14     	; 0x4b8 <delay_ms+0x10>
+ 4aa:	8f e9       	ldi	r24, 0x9F	; 159
+ 4ac:	9f e0       	ldi	r25, 0x0F	; 15
+ 4ae:	01 97       	sbiw	r24, 0x01	; 1
+ 4b0:	f1 f7       	brne	.-4      	; 0x4ae <delay_ms+0x6>
+ 4b2:	00 c0       	rjmp	.+0      	; 0x4b4 <delay_ms+0xc>
+ 4b4:	00 00       	nop
+ 4b6:	c9 01       	movw	r24, r18
+ 4b8:	9c 01       	movw	r18, r24
+ 4ba:	21 50       	subi	r18, 0x01	; 1
+ 4bc:	31 09       	sbc	r19, r1
+ 4be:	89 2b       	or	r24, r25
+ 4c0:	a1 f7       	brne	.-24     	; 0x4aa <delay_ms+0x2>
+ 4c2:	08 95       	ret
+
+000004c4 <_exit>:
+ 4c4:	f8 94       	cli
+
+000004c6 <__stop_program>:
+ 4c6:	ff cf       	rjmp	.-2      	; 0x4c6 <__stop_program>
