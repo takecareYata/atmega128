@@ -37,7 +37,7 @@ static uint8_t apply_op(void) {
         case '-': num_stack[++num_top] = val1 - val2; break;
         case '*': num_stack[++num_top] = val1 * val2; break;
         case '/': 
-            if (val2 == 0) return 0; // ⚠️ 0으로 나누기 에러 방지
+            if (val2 == 0) return 0;
             num_stack[++num_top] = val1 / val2; 
             break;
         default: return 0;

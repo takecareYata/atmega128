@@ -14,33 +14,33 @@ void TWI_init(void)
 }
 
 // BCD 형태를 10진수 정수로 변환 (예: 0x25 -> 25)
-static uint8_t bcd_to_dec(uint8_t val)
+uint8_t bcd_to_dec(uint8_t val)
 {
     return ((val >> 4) * 10) + (val & 0x0F);
 }
 
 // 10진수 정수를 BCD 형태로 변환 (예: 25 -> 0x25)
-static uint8_t dec_to_bcd(uint8_t val)
+uint8_t dec_to_bcd(uint8_t val)
 {
     return ((val / 10) << 4) | (val % 10);
 }
 
 // TWI 시작 신호 송신
-static void TWI_start(void)
+void TWI_start(void)
 {
     TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
     while (!(TWCR & (1 << TWINT)));
 }
 
 // TWI 정지 신호 송신
-static void TWI_stop(void)
+void TWI_stop(void)
 {
     TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
     _delay_us(10); // 정지 신호 안정화 대기
 }
 
 // TWI 1바이트 데이터 송신
-static void TWI_write(uint8_t data)
+void TWI_write(uint8_t data)
 {
     TWDR = data;
     TWCR = (1 << TWINT) | (1 << TWEN);
@@ -48,7 +48,7 @@ static void TWI_write(uint8_t data)
 }
 
 // TWI 1바이트 데이터 수신 (ACK 응답 포함 - 계속 읽을 때)
-static uint8_t TWI_read_ack(void)
+uint8_t TWI_read_ack(void)
 {
     TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
     while (!(TWCR & (1 << TWINT)));
@@ -56,7 +56,7 @@ static uint8_t TWI_read_ack(void)
 }
 
 // TWI 1바이트 데이터 수신 (NACK 응답 포함 - 마지막 바이트일 때)
-static uint8_t TWI_read_nack(void)
+uint8_t TWI_read_nack(void)
 {
     TWCR = (1 << TWINT) | (1 << TWEN);
     while (!(TWCR & (1 << TWINT)));

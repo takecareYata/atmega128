@@ -26,5 +26,10 @@ typedef struct {
 void TWI_init(void);
 void RTC_read_time(RTC_Time *time);
 void RTC_write_time(RTC_Time *time);
+void TWI_start(void);
+void TWI_stop(void);
+void TWI_write(uint8_t data);
+uint8_t TWI_read_ack(void);
+uint8_t TWI_read_nack(void);
 
 #endif /* RTC_H_ */
