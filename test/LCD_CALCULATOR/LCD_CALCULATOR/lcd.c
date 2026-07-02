@@ -17,13 +17,13 @@ static void LCD_pulse_enable(void)
 // ⚠️ 제어핀(PC0, PC1)을 완벽하게 보호하는 4비트 쓰기 함수
 static void LCD_write_4bit(uint8_t nibble)
 {
-    // 1. 현재 PORTC의 하위 4비트(제어선 상태)를 그대로 보존합니다.
+    // 1. 현재 PORTC의 하위 4비트(제어선 상태)를 그대로 보존
     uint8_t current_control = LCD_PORT & 0x0F;
     
     // 2. 보낼 데이터의 상위 4비트만 추출합니다.
     uint8_t data_nibble = nibble & 0xF0;
     
-    // 3. 기존 제어선 상태와 데이터 4비트를 명확히 결합하여 출력합니다.
+    // 3. 기존 제어선 상태와 데이터 4비트를 명확히 결합하여 출력
     LCD_PORT = data_nibble | current_control;
     
     // 4. 신호 인가

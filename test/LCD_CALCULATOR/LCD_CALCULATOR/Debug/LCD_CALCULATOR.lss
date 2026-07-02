@@ -1246,7 +1246,7 @@ static void LCD_pulse_enable(void)
 // ⚠️ 제어핀(PC0, PC1)을 완벽하게 보호하는 4비트 쓰기 함수
 static void LCD_write_4bit(uint8_t nibble)
 {
-    // 1. 현재 PORTC의 하위 4비트(제어선 상태)를 그대로 보존합니다.
+    // 1. 현재 PORTC의 하위 4비트(제어선 상태)를 그대로 보존
     uint8_t current_control = LCD_PORT & 0x0F;
      69c:	95 b3       	in	r25, 0x15	; 21
      69e:	9f 70       	andi	r25, 0x0F	; 15
@@ -1255,7 +1255,7 @@ static void LCD_write_4bit(uint8_t nibble)
     uint8_t data_nibble = nibble & 0xF0;
      6a0:	80 7f       	andi	r24, 0xF0	; 240
     
-    // 3. 기존 제어선 상태와 데이터 4비트를 명확히 결합하여 출력합니다.
+    // 3. 기존 제어선 상태와 데이터 4비트를 명확히 결합하여 출력
     LCD_PORT = data_nibble | current_control;
      6a2:	89 2b       	or	r24, r25
      6a4:	85 bb       	out	0x15, r24	; 21
@@ -2075,7 +2075,6 @@ int main(void)
 			}
 			else
 			{
-				// 진입하는 즉시 카운터를 깨끗하게 비우고 화면을 바로 뿌립니다.
 				clock_refresh_counter = 0;
      ae8:	10 92 14 04 	sts	0x0414, r1	; 0x800414 <clock_refresh_counter+0x2>
      aec:	10 92 15 04 	sts	0x0415, r1	; 0x800415 <clock_refresh_counter+0x3>
@@ -2125,9 +2124,6 @@ int main(void)
      b3c:	82 dd       	rcall	.-1276   	; 0x642 <keypad_scan>
      b3e:	18 2f       	mov	r17, r24
 		{
-			// 💡 계산기 모드 내부에서 clock_refresh_counter를 강제로 지우던 코드는 삭제했습니다.
-			// uint32_t 변수이므로 49일 동안 오버플로우 걱정 없이 안정적으로 상향 누적됩니다.
-
 			key = keypad_scan();
      b40:	88 23       	and	r24, r24
      b42:	09 f4       	brne	.+2      	; 0xb46 <main+0x148>

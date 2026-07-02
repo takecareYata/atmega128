@@ -158,7 +158,6 @@ int main(void)
 			}
 			else
 			{
-				// 진입하는 즉시 카운터를 깨끗하게 비우고 화면을 바로 뿌립니다.
 				clock_refresh_counter = 0;
 				refresh_clock_lcd();
 			}
@@ -178,9 +177,6 @@ int main(void)
 		// ==========================================
 		if (system_mode == 0)
 		{
-			// 💡 계산기 모드 내부에서 clock_refresh_counter를 강제로 지우던 코드는 삭제했습니다.
-			// uint32_t 변수이므로 49일 동안 오버플로우 걱정 없이 안정적으로 상향 누적됩니다.
-
 			key = keypad_scan();
 			if (key != 0 && key != ' ')
 			{
