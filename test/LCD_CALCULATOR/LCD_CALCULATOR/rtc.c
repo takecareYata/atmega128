@@ -66,6 +66,7 @@ uint8_t TWI_read_nack(void)
 // RTC로부터 전체 시간 데이터 로드
 void RTC_read_time(RTC_Time *time)
 {
+	cli();
     TWI_start();
     TWI_write(DS1307_ADDR);   // Slave Address + Write
     TWI_write(0x00);          // 읽기 시작할 레지스터 주소 (00h: 초)
@@ -83,6 +84,7 @@ void RTC_read_time(RTC_Time *time)
     time->year  = bcd_to_dec(TWI_read_nack());        // 년 (마지막 데이터이므로 NACK)
     
     TWI_stop();
+	sei();
 }
 
 // 최초 시간 설정용 함수 (필요시 호출하여 초기값 세팅)

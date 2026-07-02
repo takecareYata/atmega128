@@ -9,6 +9,7 @@
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 
 #define DS1307_ADDR 0xD0 // DS1307 I2C 7비트 주소(0x68) + Write비트(0) = 0xD0
 

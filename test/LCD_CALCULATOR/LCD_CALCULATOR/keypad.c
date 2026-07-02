@@ -15,6 +15,7 @@ void init_keypad(void)
 uint8_t keypad_scan(void)
 {
 	uint8_t data = 0;
+	
 	for(int row = 0; row < 4; row++)
 	{
 		for(int col = 0; col < 4; col++)
@@ -71,6 +72,7 @@ uint8_t keypad_get_button(int row, int col)
 	{
 		prev_state[row][col] = 1; // prev_state를 초기화
 		//printf("key: %c\r\n",keypad_char[row][col]);
+		lcd_time_count = 0; // 시계모드 접속 1분 카운트 초기화
 		return keypad_char[row][col]; 
 	}
 	

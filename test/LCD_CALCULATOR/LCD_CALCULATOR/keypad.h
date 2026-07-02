@@ -21,5 +21,7 @@ void init_keypad(void);
 uint8_t keypad_scan(void);
 uint8_t keypad_get_button(int row, int col);
 
+extern volatile uint32_t lcd_time_count;
+
 
 #endif /* KEYPAD_H_ */
